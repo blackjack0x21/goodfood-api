@@ -1,9 +1,9 @@
 const app = require("express")();
-const PORT = 8082;
+let port = process.env.PORT || 3000;
 
 app.listen(
-    PORT,
-    () => console.log(`running on http://localhost:${PORT}`)
+    port,
+    () => console.log(`running on http://localhost:${port}`)
 )
 
 app.get('/pizza', (req, res) => {
