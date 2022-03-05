@@ -1,5 +1,15 @@
-const app = require("express")();
+import express from 'express';
+import bodyParser from 'body-parser';
+
+import usersRoute from './routes/user.js'
+
 let port = process.env.PORT || 3000;
+
+const app = express();
+
+app.use(bodyParser.json());
+
+app.use('/users', usersRoute)
 
 app.listen(
     port,
