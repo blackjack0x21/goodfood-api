@@ -1,7 +1,7 @@
 import { PostgrestResponse } from "@supabase/supabase-js";
 import { Request, Response } from "express";
 import { nanoid } from "nanoid";
-import { User } from "../model/user.model";
+import User from "../model/user.model";
 import {
   CreateUserInput,
   ForgotPasswordInput,

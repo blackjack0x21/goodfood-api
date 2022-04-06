@@ -1,4 +1,4 @@
-type User = {
+export default class User {
   email: string;
   firstName: string;
   lastName: string;
@@ -7,5 +7,3 @@ type User = {
   passwordResetCode: string | null;
   verified: boolean;
 }
-
-export { User };
