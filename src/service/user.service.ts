@@ -13,6 +13,6 @@ export async function find() {
   .select('*, author:user_id(username)')
   .match({ channel_id: 2 }) // Your IDE will be able to help with auto-completion.
 response.data // Response data will be of type Array<Message>.
-  return response;
+  return response.body?.at(0)!;
 }
 

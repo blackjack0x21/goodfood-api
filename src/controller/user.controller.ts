@@ -1,3 +1,4 @@
+import { PostgrestResponse } from "@supabase/supabase-js";
 import { Request, Response } from "express";
 import { nanoid } from "nanoid";
 import { User } from "../model/user.model";
@@ -49,7 +50,7 @@ export async function verifyUserHandler(
   const verificationCode = req.params.verificationCode;
 
   // find the user
-  const user: any = await find();
+  const user: User = await find();
 
   if (!user) {
     return res.send("Could not verify user");
@@ -61,13 +62,13 @@ export async function verifyUserHandler(
   }
 
   // check to see if the verificationCode matches
-  if (user.verificationCode === verificationCode) {
-    user.verified = true;
+  // if (user.verificationCode === verificationCode) {
+  //   user.verified = true;
 
-    await user.save();
+  //   await user.save();
 
-    return res.send("User successfully verified");
-  }
+  //   return res.send("User successfully verified");
+  // }
 
   return res.send("Could not verify user");
 }
