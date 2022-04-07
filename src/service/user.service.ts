@@ -9,9 +9,8 @@ import { supabase } from "../utils/supabase";
 
 export async function find() {
   const response = await supabase
-  .from<User>('messages') // Message maps to the type of the row in your database.
-  .select('*, author:user_id(username)')
-  .match({ channel_id: 2 }) // Your IDE will be able to help with auto-completion.
-response.data // Response data will be of type Array<Message>.
-  return response.body?.at(0)!;
+  .from<User>('user') // Message maps to the type of the row in your database.
+  .select('*')
+  response.data // Response data will be of type Array<User>.
+  return response.data[0];
 }

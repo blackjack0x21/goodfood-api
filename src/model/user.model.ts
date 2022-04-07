@@ -6,4 +6,4 @@ export default class User {
   verificationCode: string | null;
   passwordResetCode: string | null;
   verified: boolean;
-}
+ }

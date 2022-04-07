@@ -19,9 +19,8 @@ router.post(
   createUserHandler
 );
 
-router.post(
-  "/api/users/verify/:id/:verificationCode",
-  validateResource(verifyUserSchema),
+router.get(
+  "/api/users/verify/",
   verifyUserHandler
 );
 
