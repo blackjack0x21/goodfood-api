@@ -51,13 +51,11 @@ export async function verifyUserHandler(
 
   // find the user
   const user: User = await find();
-  console.log("User : " + user);
 
   if (!user) {
     return res.send("Could not verify user");
   }
 
-  console.log(user)
   // check to see if they are already verified
   if (user.verified) {
     return res.send(user);

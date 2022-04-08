@@ -13,6 +13,17 @@ import {
 
 const router = express.Router();
 
+/**
+ * @openapi
+ * /api/users/:
+ *  get:
+ *     tags:
+ *     - Verify
+ *     description: Responds if the app is up and running
+ *     responses:
+ *       200:
+ *         description: App is up and running
+ */
 router.post(
   "/api/users",
   validateResource(createUserSchema),
