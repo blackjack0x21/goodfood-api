@@ -1,1 +1,1 @@
-web: node index.js
+web: NODE_ENV=hosted-dev ts-node src/app.ts

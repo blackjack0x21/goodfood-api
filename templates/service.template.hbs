@@ -1,0 +1,15 @@
+import { {{titleCase name}} } from "../model/{{snakeCase name}}.model";
+import { supabase } from "../utils/supabase";
+
+// export function create{{titleCase name}}(input: Partial<{{titleCase name}}>) {
+//   return UserModel.create(input);
+// }
+
+export async function create{{titleCase name}}(body:any) {
+  const response = await supabase
+  .from<{{titleCase name}}>('messages') // Message maps to the type of the row in your database.
+  .select('*, author:user_id(username)')
+  .match({ channel_id: 2 }) // Your IDE will be able to help with auto-completion.
+response.data // Response data will be of type Array<Message>.
+  return response;
+}
