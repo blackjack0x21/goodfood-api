@@ -1,1 +1,1 @@
-web: node index.js
+web: NODE_ENV=production ts-node src/app.ts
