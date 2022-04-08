@@ -39,7 +39,6 @@
     "pino": "^7.6.1",
     "swagger-jsdoc": "^6.2.0",
     "swagger-ui-express": "^4.3.0",
-    "tsc": "^2.0.4",
     "zod": "^3.11.6"
   }
 }
