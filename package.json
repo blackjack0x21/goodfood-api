@@ -5,7 +5,7 @@
   "author": "Everydev",
   "license": "MIT",
   "scripts": {
-    "start": "node dist/index.js",
+    "start": "node build/app.js",
     "build": "tsc",
     "local-dev": "cross-env NODE_ENV=local-dev ts-node-dev --respawn --transpile-only src/app.ts",
     "hosted-dev": "cross-env NODE_ENV=hosted-dev ts-node-dev --respawn --transpile-only src/app.ts",
