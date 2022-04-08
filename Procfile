@@ -1,1 +1,1 @@
-web: NODE_ENV=production ts-node src/app.ts
+web: NODE_ENV=hosted-dev ts-node src/app.ts
