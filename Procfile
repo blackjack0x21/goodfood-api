@@ -1,1 +1,1 @@
-web: npm run hosted-dev
+web: npm run start
