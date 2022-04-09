@@ -15,7 +15,13 @@ app.use(router);
 const port: number = config.get("port");
 
 app.listen(port || process.env.PORT, () => {
-  log.info(`App started at http://localhost:${port}`);
+  if(process.env.NODE_ENV != "local-dev" || "hosted-dev") {
+    log.info(`App started at http://localhost:${port}`);
+  }
+
+  else {
+    log.info(`App started on port:${port}`);
+  }
 
   swaggerDocs(app, port);
 
