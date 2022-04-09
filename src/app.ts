@@ -14,7 +14,7 @@ app.use(router);
 
 const port: number = config.get("port");
 
-app.listen(port, () => {
+app.listen(port || process.env.PORT, () => {
   log.info(`App started at http://localhost:${port}`);
 
   swaggerDocs(app, port);
