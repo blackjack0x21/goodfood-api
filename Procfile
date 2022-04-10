@@ -1,1 +1,1 @@
-web: npm run hosted-dev
+worker: npm start
