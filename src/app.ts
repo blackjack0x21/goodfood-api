@@ -15,12 +15,16 @@ app.use(router);
 const port: number = config.get("port");
 
 app.listen(port || process.env.PORT, () => {
-  if(process.env.NODE_ENV != "local-dev" || "hosted-dev") {
-    log.info(`App started at http://localhost:${port}`);
+  if(process.env.NODE_ENV === "local-dev" || "hosted-dev") {
+    log.info(`App started at http://localhost:${port} on ENV = ${process.env.NODE_ENV}`);
   }
 
-  else {
-    log.info(`App started on port:${port}`);
+  if(process.env.NODE_ENV === "staging") {
+    log.info(`App started on https://goodfood-staging-api.herokuapp.com:${port} on ENV = ${process.env.NODE_ENV}`);
+  }
+
+  if(process.env.NODE_ENV === "production") {
+    log.info(`App started on https://goodfood-api.herokuapp.com:${port} on ENV = ${process.env.NODE_ENV}`);
   }
 
   swaggerDocs(app, port);
