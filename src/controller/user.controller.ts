@@ -1,6 +1,6 @@
-import { PostgrestResponse } from "@supabase/supabase-js";
+import { PostgrestError } from "@supabase/supabase-js";
+import { plainToClass } from 'class-transformer';
 import { Request, Response } from "express";
-import { nanoid } from "nanoid";
 import User from "../model/user.model";
 import {
   CreateUserInput,
@@ -14,7 +14,7 @@ import { find } from "../service/user.service";
 //   findUserByEmail,
 //   findUserById,
 // } from "../service/user.service";
-import log from "../utils/logger";
+import { validate } from "class-validator";
 
 export async function createUserHandler(
   req: Request<{}, {}, CreateUserInput>,
@@ -50,15 +50,30 @@ export async function verifyUserHandler(
   const verificationCode = req.params.verificationCode;
 
   // find the user
-  const user: User = await find();
+  const userResponse: User | PostgrestError = await find();
+  const user: User = plainToClass(User, userResponse);
+  try {
+    validate(user).then(errors => {
+      // errors is an array of validation errors
+      if (errors.length > 0) {
+        console.log('validation failed. errors: ', errors);
+      } else {
+        console.log('validation succeed');
+      }
+    });
+  }
 
-  if (!user) {
+  catch {
+    console.log(userResponse);
+  }
+
+  if (!userResponse) {
     return res.send("Could not verify user");
   }
 
   // check to see if they are already verified
-  if (user.verified) {
-    return res.send(user);
+  if (userResponse.verified) {
+    return res.send(userResponse);
   }
 
   // check to see if the verificationCode matches

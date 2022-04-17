@@ -42,7 +42,8 @@ router.post(
  *         description: App is up and running
  */
 router.get(
-  "/api/users/verify/",
+  "/api/users/verify/:id/:verificationCode",
+  validateResource(verifyUserSchema),
   verifyUserHandler
 );
 
