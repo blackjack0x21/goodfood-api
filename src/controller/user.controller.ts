@@ -57,14 +57,14 @@ export async function verifyUserHandler(
       // errors is an array of validation errors
       if (errors.length > 0) {
         console.log('validation failed. errors: ', errors);
+        throw new Error();
       } else {
         console.log('validation succeed');
       }
     });
   }
-
   catch {
-    console.log(userResponse);
+    console.log("Error Occured");
   }
 
   if (!userResponse) {
