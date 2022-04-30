@@ -1,0 +1,29 @@
+import express from "express";
+import {
+  create{{titleCase name}}Handler,
+} from "../controller/{{name}}.controller";
+import validateResource from "../middleware/validateResource";
+import {
+  create{{titleCase name}}Schema,
+} from "../schema/{{name}}.schema";
+
+const router = express.Router();
+
+/**
+ * @openapi
+ * /api/{{name}}s/:
+ *  get:
+ *     tags:
+ *     - Verify
+ *     description: Responds if the app is up and running
+ *     responses:
+ *       200:
+ *         description: App is up and running
+ */
+router.post(
+  "/api/{{name}}s",
+  validateResource(create{{titleCase name}}Schema),
+  create{{titleCase name}}Handler
+);
+
+export default router;
