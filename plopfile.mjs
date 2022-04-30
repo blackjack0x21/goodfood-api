@@ -30,7 +30,7 @@ export default function (
         },
         {
           type: "add",
-          path: "src/routes/{{snakeCase name}}.route.ts",
+          path: "src/routes/{{snakeCase name}}.routes.ts",
           templateFile: "templates/route.template.hbs",
         },
         {
