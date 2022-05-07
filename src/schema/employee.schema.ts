@@ -1,6 +1,6 @@
 import { object, string, TypeOf } from "zod";
 
-export const createCustomerSchema = object({
+export const createEmployeeSchema = object({
   body: object({
     firstName: string({
       required_error: "First name is required",
@@ -10,14 +10,17 @@ export const createCustomerSchema = object({
     }),
     password: string({
       required_error: "Password is required",
-    }),
+    }).min(6, "Password is too short - should be min 6 chars"),
     passwordConfirmation: string({
       required_error: "Password confirmation is required",
     }),
     email: string({
       required_error: "Email is required",
-    })
+    }).email("Not a valid email"),
+  }).refine((data) => data.password === data.passwordConfirmation, {
+    message: "Passwords do not match",
+    path: ["passwordConfirmation"],
   }),
 });
 
-export type CreateCustomerInput = TypeOf<typeof createCustomerSchema>["body"];
+export type CreateEmployeeInput = TypeOf<typeof createEmployeeSchema>["body"];
