@@ -4,6 +4,7 @@ import validateModel from "../middleware/validateModel";
 import Customer from "../model/customer.model";
 import { CreateCustomerInput } from "../schema/customer.schema";
 import { createCustomer, signUpCustomer } from "../service/customer.service"
+import zxcvbn from 'zxcvbn';
 
 export async function createCustomerHandler(req: Request, res: Response){
 
@@ -24,10 +25,14 @@ export async function createCustomerHandler(req: Request, res: Response){
   // }
 
   if(await validateModel(customer)) {
-
     // Check if passwords match
     if(!customer.passwordsMatch()) {
       return res.status(400).send("Passwords do not match");
+    }
+
+    const passwordStrength = zxcvbn(customer.password).score;
+    if(passwordStrength < 2) {
+      return res.status(400).send("Password is too weak");
     }
 
     // Create user in auth.users and get returned user to retreive its ID

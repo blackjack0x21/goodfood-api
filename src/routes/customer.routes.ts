@@ -92,7 +92,7 @@ const router = express.Router();
 //  *       409:
 //  *         description: User already exists
 //  *       400:
-//  *         description: Passwords do not match | User's data is invalid
+//  *         description: Passwords do not match | Passwordis too weak | User's data is invalid
 //  */
 router.post(
   "/api/customer",
