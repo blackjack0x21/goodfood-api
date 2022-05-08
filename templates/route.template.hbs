@@ -11,17 +11,17 @@ const router = express.Router();
 
 /**
  * @openapi
- * /api/{{name}}s/:
+ * /api/{{name}}/:
  *  get:
  *     tags:
- *     - Verify
+ *     - {{titleCase name}}
  *     description: Responds if the app is up and running
  *     responses:
  *       200:
  *         description: App is up and running
  */
 router.post(
-  "/api/{{name}}s",
+  "/api/{{name}}",
   validateResource(create{{titleCase name}}Schema),
   create{{titleCase name}}Handler
 );

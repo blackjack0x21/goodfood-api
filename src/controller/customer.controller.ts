@@ -35,7 +35,7 @@ export async function createCustomerHandler(req: Request, res: Response){
 
     // If returned user is null, it means it already exists
     if(!supabaseUser) {
-      return res.status(400).send("User already exists");
+      return res.status(409).send("User already exists");
     }
 
     customer.id = supabaseUser.id;
@@ -44,7 +44,7 @@ export async function createCustomerHandler(req: Request, res: Response){
     const createdCustomer = await createCustomer(customer);
     // If returned user is null, it means it already exists
     if(!createdCustomer) {
-      return res.status(400).send("User already exists");
+      return res.status(409).send("User already exists");
     }
 
     // User has been created
