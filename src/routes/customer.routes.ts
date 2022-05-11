@@ -14,7 +14,7 @@ const router = express.Router();
  * /api/customer:
  *   post:
  *     tags:
- *       - Products
+ *       - Customer
  *     summary: Creates a customer
  *     requestBody:
  *       description: A JSON object containing a customer's information
