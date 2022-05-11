@@ -1,4 +1,4 @@
-import { IsBoolean, IsDate, IsEmail, IsNumber, IsOptional, IsString, IsUUID } from "class-validator";
+import { IsNumber, IsOptional } from "class-validator";
 import UserProfile from "./userProfile.model";
 
 export default class Customer extends UserProfile {
