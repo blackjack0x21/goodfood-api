@@ -28,6 +28,16 @@ export default function (
           path: "src/controller/{{snakeCase name}}.controller.ts",
           templateFile: "templates/controller.template.hbs",
         },
+        {
+          type: "add",
+          path: "src/routes/{{snakeCase name}}.routes.ts",
+          templateFile: "templates/route.template.hbs",
+        },
+        {
+          type: "add",
+          path: "src/schema/{{snakeCase name}}.schema.ts",
+          templateFile: "templates/schema.template.hbs",
+        },
       ], // array of actions
     });
   

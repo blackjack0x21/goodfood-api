@@ -1,4 +1,5 @@
 require("dotenv").config();
+var cors=require('cors');
 import express from "express";
 import config from "config";
 import { supabase } from "./utils/supabase";
@@ -9,6 +10,8 @@ import swaggerDocs from "./utils/swagger";
 const app = express();
 
 app.use(express.json());
+
+app.use(cors({origin:true,credentials: true}));
 
 app.use(router);
 

@@ -15,6 +15,8 @@ import { find } from "../service/user.service";
 //   findUserById,
 // } from "../service/user.service";
 import { validate } from "class-validator";
+import validateModel from "../middleware/validateModel";
+import Customer from "../model/customer.model";
 
 export async function createUserHandler(
   req: Request<{}, {}, CreateUserInput>,
@@ -51,21 +53,8 @@ export async function verifyUserHandler(
 
   // find the user
   const userResponse: User | PostgrestError = await find();
-  const user: User = plainToClass(User, userResponse);
-  try {
-    validate(user).then(errors => {
-      // errors is an array of validation errors
-      if (errors.length > 0) {
-        console.log('validation failed. errors: ', errors);
-        throw new Error();
-      } else {
-        console.log('validation succeed');
-      }
-    });
-  }
-  catch {
-    console.log("Error Occured");
-  }
+  const user: Customer = plainToClass(Customer, userResponse);
+  console.log("validated is : " + await validateModel(user));
 
   if (!userResponse) {
     return res.send("Could not verify user");
@@ -85,5 +74,5 @@ export async function verifyUserHandler(
   //   return res.send("User successfully verified");
   // }
 
-  return res.send("Could not verify user");
+  return res.send("User Verified");
 }

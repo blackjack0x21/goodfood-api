@@ -10,7 +10,7 @@ import { supabase } from "../utils/supabase";
 
 export async function find() {
   const { data, error } = await supabase
-  .from<User>('user') // Message maps to the type of the row in your database.
+  .from<User>('customers') // Message maps to the type of the row in your database.
   .select('*')
   data // Response data will be of type Array<User>.
   try {
