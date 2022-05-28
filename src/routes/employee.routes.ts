@@ -11,17 +11,50 @@ const router = express.Router();
 
 /**
  * @openapi
- * /api/employees/:
- *  get:
+ * /api/employee:
+ *   post:
  *     tags:
- *     - Verify
- *     description: Responds if the app is up and running
+ *       - Employee
+ *     summary: Creates an Employee
+ *     requestBody:
+ *       description: A JSON object containing an employee's information
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             required:
+ *              - authToken
+ *              - firstName
+ *              - lastName
+ *              - email
+ *              - accountType
+ *             properties:
+ *               authToken:
+ *                 type: string
+ *                 description: User's auth token to execute the request
+ *               firstName:
+ *                 type: string
+ *                 description: Employee's first name
+ *               lastName:
+ *                 type: string
+ *                 description: Employee's last name
+ *               email:
+ *                 type: string
+ *                 description: Employee's email
+ *               accountType:
+ *                 type: number
+ *                 description: Employee's account type
  *     responses:
- *       200:
- *         description: App is up and running
+ *       201:
+ *         description: Created
+ *       409:
+ *         description: User already exists
+ *       400:
+ *         description: User's data is invalid
  */
 router.post(
-  "/api/employees",
+  "/api/employee",
   validateResource(createEmployeeSchema),
   createEmployeeHandler
 );

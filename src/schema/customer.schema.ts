@@ -16,7 +16,7 @@ export const createCustomerSchema = object({
     }),
     email: string({
       required_error: "Email is required",
-    })
+    }).email("Not a valid email")
   }),
 });
 
