@@ -20,4 +20,16 @@ export const createEmployeeSchema = object({
   }),
 });
 
+export const getEmployeeSchema = object({
+  body: object({
+    authToken: string({
+      required_error: "Auth token is required",
+    }),
+    userId: string({
+      required_error: "User UUID is required",
+    }),
+  }),
+});
+
 export type CreateEmployeeInput = TypeOf<typeof createEmployeeSchema>["body"];
+export type GetEmployeeInput = TypeOf<typeof getEmployeeSchema>["body"];
