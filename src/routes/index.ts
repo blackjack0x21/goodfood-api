@@ -1,6 +1,7 @@
 import express from "express";
 import user from "./user.routes";
 import customer from "./customer.routes";
+import employee from "./employee.routes";
 
 const router = express.Router();
 
@@ -19,5 +20,6 @@ router.get("/healthcheck", (_, res) => res.sendStatus(200));
 
 router.use(user);
 router.use(customer);
+router.use(employee);
 
 export default router;
