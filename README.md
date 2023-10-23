@@ -1,3 +1,26 @@
+:us:
+# Preparing the environment
+1. Install [Node v16.14.2](https://nodejs.org/dist/v16.14.2/)
+
+# Installation
+1. If not already installed, install [Git](https://git-scm.com/downloads)
+2. Clone the repo
+3. Install npm dependencies with
+> npm run i
+4. Once in the repo, create a file named .env at the root of the project and retrieve variables from the discord
+
+# Commands
+The project has been designed to work with 2 dev modes.
+1. dev-local (call to local DB)
+2. dev-hosted (call to the DB on the server)
+
+The list of commands for starting the project is as follows:
+* Start in dev-local
+> npm run dev-local
+* Start in dev-hosted
+> npm run dev-hosted
+
+:fr:
 # Préparation de l'environnement
 1. Installer [Node v16.14.2](https://nodejs.org/dist/v16.14.2/)
 
